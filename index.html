@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Estudos Bíblicos</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Minhas Anotações</h1>
+        
+        <div class="toolbar-botoes">
+            <button onclick="carregarTemplate('estudo')">📝 Novo Estudo Bíblico</button>
+            <button onclick="carregarTemplate('devocional')">☕ Novo Devocional</button>
+            <button onclick="carregarTemplate('sermao')">🎤 Novo Sermão</button>
+        </div>
+
+        <input type="text" id="tituloNota" placeholder="Digite o Título ou Referência Bíblica aqui..." />
+
+        <div id="editor-container"></div>
+
+        <div class="acoes">
+            <button class="btn-salvar" onclick="salvarNota()">💾 Salvar Localmente</button>
+            <button class="btn-pdf" onclick="gerarPDF()">📄 Gerar PDF</button>
+        </div>
+
+        <hr>
+
+        <h2>Anotações Salvas</h2>
+        <div id="lista-anotacoes">
+            </div>
+    </div>
+
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
