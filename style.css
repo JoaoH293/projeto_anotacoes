@@ -1,0 +1,121 @@
+:root {
+    --primary: #1a2a6c;
+    --text-muted: #666;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* CONTAINER DE LOGIN */
+#auth-container {
+    background: var(--white);
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    margin-top: 50px;
+    text-align: center; /* FORÇA TUDO NO CENTRO */
+}
+
+.auth-header h1 {
+    margin: 0 0 10px 0;
+    color: var(--primary);
+    font-size: 28px;
+    text-align: center; /* Reforço */
+}
+
+.auth-header p {
+    margin: 0 0 30px 0;
+    color: var(--text-muted);
+    font-size: 15px;
+    text-align: center; /* Reforço */
+}
+
+/* INPUTS */
+input[type="email"], 
+input[type="password"], 
+#tituloNota {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 16px;
+    background: #fafafa;
+    box-sizing: border-box;
+    display: block;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(26, 42, 108, 0.1);
+}
+
+/* BOTÕES */
+button {
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s;
+    margin-bottom: 10px;
+}
+
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: #0f1a4a; }
+
+.btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+.btn-outline:hover { background: rgba(26, 42, 108, 0.05); }
+
+/* APP PRINCIPAL */
+#app-container {
+    width: 100%;
+    max-width: 850px;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.centralizado { text-align: center; color: var(--primary); }
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.toolbar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.label-pergunta {
+    display: block;
+    font-weight: bold;
+    margin: 20px 0 8px 0;
+    color: #444;
+}
+
+.editor-campo { height: 150px; margin-bottom: 40px; }

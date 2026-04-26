@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário Bíblico Cloud</title>
+    <link rel="manifest" href="manifest.json">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="auth-container">
+        <div class="auth-header">
+            <h1>🙏 Diário Bíblico</h1>
+            <p>Entre para sincronizar seus estudos</p>
+        </div>
+        
+        <div class="auth-form">
+            <input type="email" id="email" placeholder="E-mail de acesso">
+            <input type="password" id="password" placeholder="Sua senha">
+            
+            <button class="btn-primary" onclick="handleAuth('login')">Acessar Conta</button>
+            <button class="btn-outline" onclick="handleAuth('signup')">Criar nova conta</button>
+        </div>
+    </div>
+
+    <div id="app-container" style="display:none;">
+        <header class="app-header">
+            <span id="user-display"></span>
+            <button onclick="logout()" class="btn-logout">Sair</button>
+        </header>
+        
+        <h1 class="centralizado">📖 Ferramenta de Estudos</h1>
+        
+        <div class="toolbar-grid">
+            <button class="btn-tool" onclick="gerarFormulario('estudo')">📝 Novo Estudo</button>
+            <button class="btn-tool" onclick="gerarFormulario('devocional')">☕ Novo Devocional</button>
+            <button class="btn-tool" onclick="gerarFormulario('sermao')">🎤 Novo Sermão</button>
+        </div>
+
+        <div id="area-formulario" class="card-form" style="display:none;">
+            <input type="text" id="tituloNota" placeholder="Título ou Referência">
+            <div id="campos-dinamicos"></div>
+            <div class="acoes-form">
+                <button class="btn-salvar" onclick="salvarNota()">💾 Salvar na Nuvem</button>
+                <button class="btn-pdf" onclick="gerarPDF()">📄 Gerar PDF</button>
+            </div>
+        </div>
+
+        <hr>
+        <h2 class="centralizado">Minhas Anotações</h2>
+        <div id="lista-anotacoes"></div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, query, where, getDocs, doc, updateDoc, deleteDoc, orderBy } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBBfUmjFUv9-mrbVZeGNleRBS19fUwSrr8",
+            authDomain: "anotacoesteologicas-5cf2d.firebaseapp.com",
+            projectId: "anotacoesteologicas-5cf2d",
+            storageBucket: "anotacoesteologicas-5cf2d.firebasestorage.app",
+            messagingSenderId: "720666656507",
+            appId: "1:720666656507:web:02aa730e22bd705ad67a5e",
+            measurementId: "G-21XBSKXW6S"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        window.fb = { 
+            auth: getAuth(app), 
+            db: getFirestore(app), 
+            createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, 
+            collection, addDoc, query, where, getDocs, doc, updateDoc, deleteDoc, orderBy 
+        };
+    </script>
+
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
